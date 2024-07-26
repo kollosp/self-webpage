@@ -5,15 +5,24 @@
 </head>
 <body>
 
-Menu:
-<ul>
-  <li>about us</li>
-  <li>members</li>
-  <li>contact</li>
-</ul>
+{% include 'header.html'%}
+{% include 'menu.html'%}
 
 {% block content %}
 {% endblock %}
+
+user:
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
+  <button type="submit">Log Out</button>
+</form>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+<br>
+{% include 'footer.html'%}
 
 </body>
 </html>

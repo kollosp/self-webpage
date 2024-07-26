@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q+2(q5u*=pt!5*i%4ceey$ht4g0%-9j(cm%0yv0q1i-*ijt6(^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -52,10 +52,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'self_webpage.urls'
 
+LOGIN_REDIRECT_URL = "/"  # new
+LOGOUT_REDIRECT_URL = "/"  # new
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates", BASE_DIR / "members/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
